@@ -1,0 +1,20 @@
+@import '../../styles/variables.scss';
+
+.not_found {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+
+  & > img {
+    width: 30%;
+  }
+
+  & > a {
+    text-decoration: none;
+    font-size: 2rem;
+    color: $color_black_text;
+  }
+}

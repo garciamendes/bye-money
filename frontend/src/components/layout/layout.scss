@@ -1,0 +1,112 @@
+@import '../../styles/variables.scss';
+
+.container_menu_main {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  width: 100%;
+
+  .content_main_side {
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: $width_side_menu;
+    background: $color_side_menu;
+
+    .content_item_nav {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+
+      .item {
+        cursor: pointer;
+        width: 100%;
+        padding: 1rem 0;
+        margin: .3rem 2rem;
+        padding-left: 1.5rem;
+        border-radius: 15px 0 0 15px;
+        transition: .24s;
+        list-style: none;
+
+        & > a {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          font-size: 1.2rem;
+          margin-top: .5rem;
+          text-decoration: none;
+          color: $color_white;
+        }
+
+        &:hover {
+          background: $color_active_item;
+          filter: grayscale(10%);
+        }
+
+        &.active {
+          font-weight: 500;
+          background: $color_active_item;
+        }
+
+      }
+    }
+
+    .content_logout {
+      cursor: pointer;
+      position: absolute;
+      bottom: 20px;
+      font-size: 1.2rem;
+      color: $color_white;
+    }
+  }
+
+  .content_right {
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - $width_side_menu);
+    height: 100%;
+
+    .container_top_main {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 0 1rem 0 0;
+      width: 100%;
+      height: $height_top_menu;
+      gap: 15px;
+      background-color: $color_white;
+
+      .notification {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50px;
+        height: 40px;
+        width: 40px;
+        color: $color_active_item;
+        background-color: $color_background_notification;
+      }
+
+      .content_avatar {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+
+        & > img {
+          height: 40px;
+          width: 40px;
+          border-radius: 50px;
+          object-fit: cover;
+        }
+      }
+    }
+
+    .children {
+      height: calc(100% - $height_top_menu);
+    }
+  }
+
+}
