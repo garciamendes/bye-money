@@ -4,6 +4,7 @@ import { Link, useLocation } from 'react-router-dom'
 
 // Third party
 import { map } from 'lodash'
+import { FiLogOut } from 'react-icons/fi'
 
 // Project
 import { routes } from '../../../routes'
@@ -37,7 +38,8 @@ export function SideMenu() {
         })}
       </ul>
       <div className='content_logout'>
-        <span>Logout</span>
+        <FiLogOut size={25} />
+        <span>Sair</span>
       </div>
     </div>
   )

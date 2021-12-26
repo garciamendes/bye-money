@@ -43,7 +43,6 @@
 
         &:hover {
           background: $color_active_item;
-          filter: grayscale(10%);
         }
 
         &.active {
@@ -57,9 +56,21 @@
     .content_logout {
       cursor: pointer;
       position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 70%;
+      gap: 7px;
+      padding: 1rem 0;
       bottom: 20px;
       font-size: 1.2rem;
+      border-radius: 15px;
       color: $color_white;
+      transition: .24s;
+
+      &:hover {
+        background: $color_active_item;
+      }
     }
   }
 
