@@ -7,7 +7,7 @@ import { map } from 'lodash'
 import { FiLogOut } from 'react-icons/fi'
 
 // Project
-import { routes } from '../../../routes'
+import { routes, sizeIcon } from '../../../routes'
 
 export function SideMenu() {
   // Hooks
@@ -38,7 +38,7 @@ export function SideMenu() {
         })}
       </ul>
       <div className='content_logout'>
-        <FiLogOut size={25} />
+        <FiLogOut size={sizeIcon} />
         <span>Sair</span>
       </div>
     </div>

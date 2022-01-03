@@ -10,6 +10,7 @@ import { NotPageFound } from '../components/NotPageFound'
 // Local
 import { IRoute } from './types'
 
+export const sizeIcon = 20
 
 export const routes: Array<IRoute> = [
   {
@@ -17,8 +18,8 @@ export const routes: Array<IRoute> = [
     path: '/',
     menu: true,
     exact: true,
-    name: 'Home 1',
-    icon: <FiHome size={25} />
+    name: 'Home',
+    icon: <FiHome size={sizeIcon} />
   },
   {
     component: Profile,
@@ -26,7 +27,7 @@ export const routes: Array<IRoute> = [
     menu: true,
     exact: true,
     name: 'Pefil',
-    icon: <AiOutlineUser size={25} />
+    icon: <AiOutlineUser size={sizeIcon} />
   },
   {
     component: NotPageFound,
