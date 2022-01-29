@@ -11,6 +11,7 @@
     "@types/react": "^17.0.20",
     "@types/react-dom": "^17.0.9",
     "lodash": "^4.17.21",
+    "query-string": "^7.1.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-icons": "^4.3.1",
@@ -18,6 +19,8 @@
     "react-router-dom": "5.3.0",
     "react-scripts": "5.0.0",
     "sass": "^1.45.1",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^2.0.4",
     "typescript": "^4.4.2",
     "web-vitals": "^2.1.0"
   },

@@ -4,10 +4,23 @@ import React, { useState } from 'react'
 // Third party
 import 'react-modern-calendar-datepicker/lib/DatePicker.css'
 import { Calendar, Day } from 'react-modern-calendar-datepicker'
+import { Button, Grid, Icon, Input, Table } from 'semantic-ui-react'
+import { map } from 'lodash'
 import { AiOutlinePlus } from 'react-icons/ai'
+import { FiEdit } from 'react-icons/fi'
+import { RiDeleteBinLine } from 'react-icons/ri'
+import { BsHdd } from 'react-icons/bs'
+
+// Project
+import { TableBody } from '../../components/Table/tableBody'
+import { TableFooter } from '../../components/Table/tableFooter'
 
 // Local
 import './home.scss'
+
+// Preview
+import api from '../../API.json'
+import { ModalFilters } from '../../components/Modal/modalFilters'
 
 export function Home() {
   // Others
@@ -20,6 +33,8 @@ export function Home() {
 
   // States
   const [selectDay, setSelectDay] = useState(defaultValue)
+  const [isLoading, setIsLoading] = useState(false)
+  const [search, setSearch] = useState('')
 
   const valuesChange = (value: Day) => {
     setSelectDay({
@@ -40,6 +55,49 @@ export function Home() {
     )
   }
 
+  const renderTable = () => {
+    return map(api.results, (item) => {
+      return (
+        <Table.Row
+          key={item.id}
+        >
+          <Table.Cell width='3'>
+            {item.name ? <p>{item.name}</p> : <p>Indisponivel</p>}
+          </Table.Cell>
+          <Table.Cell width='3'>
+            {item.totalValue ? <p>R$ {item.totalValue}</p> : <p>Indisponivel</p>}
+          </Table.Cell>
+          <Table.Cell width='3'>
+            {item.installmentValue ? <p>R$ {item.installmentValue}</p> : <p>Indisponivel</p>}
+          </Table.Cell>
+          <Table.Cell width='3'>
+            {item.purchaseDate ? <p>{item.purchaseDate}</p> : <p>Indisponivel</p>}
+          </Table.Cell>
+          <Table.Cell width='3'>
+            {item.format ? <p>{item.format}</p> : <p>Indisponivel</p>}
+          </Table.Cell>
+          <Table.Cell width='3'>
+            {(item.currentInstallment && item.totalInstallment) ?
+              <>
+                <span className='current_installment'>{item.currentInstallment}</span>
+                /
+                <span className='total_installment'>{item.totalInstallment}</span>
+              </>
+              :
+              <p>Indisponivel</p>}
+          </Table.Cell>
+          <Table.Cell width='2' />
+          <Table.Cell width='1' className='action-cell'>
+            <FiEdit size={15} />
+          </Table.Cell>
+          <Table.Cell width='1' className='action-cell'>
+            <RiDeleteBinLine size={15} />
+          </Table.Cell>
+        </Table.Row>
+      )
+    })
+  }
+
   return (
     <div className='container_main_home'>
       <div className='content_left'>
@@ -48,36 +106,56 @@ export function Home() {
         </div>
 
         <div className='container_table'>
-          <table>
-            <thead>
-              <tr>
-                <th>Nome</th>
-              </tr>
-              <tr>
-                <th>Nome</th>
-              </tr>
-              <tr>
-                <th>Nome</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Netflix</td>
-              </tr>
-              <tr>
-                <td>Netflix</td>
-              </tr>
-              <tr>
-                <td>Netflix</td>
-              </tr>
-            </tbody>
-          </table>
+          <div className='search-bar-container'>
+            <ModalFilters />
+            <Input
+              icon='search'
+              iconPosition='left'
+              name='search'
+              className='i-search-bar'
+              placeholder='Procurar pelo nome'
+              transparent />
 
-          <div className='pagination'>
-            <button>1</button>
-            <button>2</button>
-            <button>3</button>
+            <Button circular type='submit' className='i-search-btn'>
+              Buscar
+            </Button>
           </div>
+
+          <Grid.Row className='table-content'>
+            <Grid.Column className='grid'>
+              <Table className='table'>
+                <Table.Header>
+                  <Table.Row>
+                    <Table.HeaderCell>Nome</Table.HeaderCell>
+                    <Table.HeaderCell>Valor total</Table.HeaderCell>
+                    <Table.HeaderCell>Valor da parcela</Table.HeaderCell>
+                    <Table.HeaderCell>Data da compra</Table.HeaderCell>
+                    <Table.HeaderCell>Formato</Table.HeaderCell>
+                    <Table.HeaderCell>Parcelamento</Table.HeaderCell>
+                    <Table.HeaderCell />
+                  </Table.Row>
+                </Table.Header>
+
+                <TableBody
+                  colSpan={7}
+                  data={api}
+                  isLoading={isLoading}
+                  search={search}
+                  icon={<BsHdd size={30} />}
+                  header={'Nenhum item cadstrado'}
+                >
+                  {renderTable()}
+                </TableBody>
+
+                <TableFooter
+                  colSpan={7}
+                  data={api}
+                  className='footer-highlight'
+                />
+              </Table>
+            </Grid.Column>
+          </Grid.Row>
+
         </div>
       </div>
       <div className='content_right'>
@@ -99,6 +177,6 @@ export function Home() {
           </div>
         </div>
       </div>
-    </div>
+    </div >
   )
 }

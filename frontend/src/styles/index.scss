@@ -14,3 +14,12 @@ html, body, #root {
   height: 100%;
   background: $color_background;
 }
+
+.btn-filter {
+  background-color: $color_side_menu !important;
+  opacity: .8 !important;
+
+  &:hover {
+    opacity: 1 !important;
+  }
+}

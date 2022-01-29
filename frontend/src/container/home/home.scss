@@ -17,50 +17,202 @@
       display: flex;
       height: 15%;
 
-
       background-color: $color_white;
     }
 
     .container_table {
-      flex: 1;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      width: 100%;
 
-      background-color: red;
+      .search-bar-container {
+        display: flex !important;
+        justify-content: flex-end !important;
+        transition: .25s !important;
+        margin: .5rem 0;
 
-      table {
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-        flex: 1;
-        background-color: blue;
+        .i-search-bar {
+          display: flex !important;
+          height: 40px !important;
+          padding: 0 1% !important;
+          width: 40% !important;
+          border-radius: 24px 0px 0px 24px !important;
+          background: transparent !important;
+          border: 1px solid $color_side_menu !important;
+          border-right: 0px !important;
 
-        thead {
-          display: flex;
-          background-color: aqua;
+          input {
+            color: $color_black_text;
+          }
         }
 
-        tbody {
-          display: flex;
-          background-color: aquamarine;
+        .i-search-bar i {
+          margin-left: 10px !important;
+          color: $color_side_menu !important;
+        }
+
+        .i-search-btn {
+          height: 40px !important;
+          width: 10% !important;
+          border-radius: 0px 24px 24px 0px !important;
+          background: $color_side_menu !important;
+          opacity: .8 !important;
+          color: white !important;
+          transition: .25s !important;
+
+          &:hover {
+            opacity: 1 !important;
+          }
         }
       }
 
-      & > .pagination {
+      .table-content {
         display: flex;
-        justify-content: flex-end;
-        gap: 3px;
+        justify-content: center;
+        width: 100% !important;
 
-        & > button {
-          cursor: pointer;
-          padding: .5rem;
-          width: 35px;
-          font-size: 1rem;
-          border: none;
-          border-radius: 50px;
-          color: $color_white;
-          background-color: $color_side_menu;
+        .grid {
+          width: 100% !important;
+
+          .table {
+            width: 100% !important;
+            margin: 0% auto;
+            border: none !important;
+            border-radius: 0px !important;
+            border-collapse: collapse !important;
+            background: transparent;
+
+            button {
+              background: rgba(5, 11, 36, 0.5);
+            }
+
+            .action-header {
+              text-align: center;
+            }
+
+            .action-cell {
+              text-align: center;
+
+              & > svg {
+                cursor: pointer;
+              }
+            }
+
+            thead {
+              * {
+                color: $color_text_header_table;
+                background: none !important;
+                border-top: 1px solid $color_black_text;
+                border-bottom: 1px solid $color_black_text;
+                border-radius: 0px !important;
+              }
+            }
+
+            tbody {
+              * {
+                color: $color_text_body_table;
+                background: transparent !important;
+              }
+
+              tr {
+                &:last-child {
+                  border-bottom: 1px solid $color_black_text !important;
+                }
+              }
+
+              td {
+                border-top: none;
+              }
+
+              .current_installment {
+                font-size: 1.2rem;
+              }
+
+              .total_installment {
+                font-size: 1rem;
+              }
+            }
+
+            tfoot {
+              .item {
+                background: transparent !important;
+                color: $color_side_menu !important;
+
+                .active & {
+                  background: transparent !important;
+                  color: $color_side_menu !important;
+                }
+
+                &:hover {
+                  background: $color_side_menu !important;
+                  color: $color_white !important;
+                }
+              }
+
+              .footer-results {
+                color: $color_text_body_table !important;
+
+                .current_page {
+                  color: $color_black_text;
+                  font-size: 1.6rem;
+                  font-weight: 500;
+                }
+
+                .total_page {
+                  color: $color_text_header_table;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .footer-highlight {
+        th {
+          background: transparent !important;
+
+          .pagination {
+            background: transparent !important;
+            border-width: 0px !important;
+            box-shadow: none !important;
+
+            .item {
+              color: white !important;
+              border-radius: 100% !important;
+              transition: all .24s;
+
+              &.active {
+                background: $color_active_item !important;
+                color: $color_white !important;
+              }
+
+              &:hover {
+                background: white !important;
+                color: #4A4F65 !important;
+              }
+
+              &::after {
+                content: none !important;
+              }
+
+              &::before {
+                content: none !important;
+              }
+            }
+          }
+
+          .footer-results {
+            font-size: 16px !important;
+            color: $color_side_menu !important;
+          }
+
+          &:first-child {
+            padding-left: 0px !important;
+          }
+
+          &:last-child {
+            padding-right: 0px !important
+          }
         }
       }
     }
