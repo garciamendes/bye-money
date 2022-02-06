@@ -1,8 +1,17 @@
 // React
 import React from 'react'
 
+// Project
+import { Loader } from '../../components/Loader'
+
+// Local
+import './profile.scss'
+
 export function Profile() {
   return (
-    <h2>asdqwdqwd</h2>
+    <div className='container_main_profile'>
+      <Loader />
+      <span>Construíndo...</span>
+    </div>
   )
 }

@@ -23,3 +23,16 @@ html, body, #root {
     opacity: 1 !important;
   }
 }
+
+.c_loader {
+  border: 2px solid #e5e5e5;
+  border-radius: 50%;
+  border-top-color: $color_side_menu;
+  animation: is-rotating 1s infinite;
+
+  @keyframes is-rotating {
+    to {
+      transform: rotate(1turn);
+    }
+  }
+}

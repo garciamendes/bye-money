@@ -6,7 +6,7 @@ export function getLocationFilters(location, filters) {
   const locationSearch = queryString.parse(location.search)
   const locationFilters = {}
 
-  forEach(filters, key => {
+  forEach(filters, (key) => {
     if (has(locationSearch, key)) locationFilters[key] = locationSearch[key]
   })
 

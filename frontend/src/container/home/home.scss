@@ -15,9 +15,47 @@
 
     .container_info_status_money {
       display: flex;
+      justify-content: space-around;
       height: 15%;
 
       background-color: $color_white;
+
+      .container_price {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        padding: 0 1.2rem;
+        font-size: 1.2rem;
+
+        .divider {
+          width: 1px;
+          height: 30px;
+          margin: 0 .5rem;
+          background-color: $color_background_notification;
+        }
+        &:nth-child(2) {
+          flex-direction: row;
+          padding: 0 1.4rem;
+        }
+
+        .price {
+          font-size: 1.5rem;
+        }
+
+        .inss {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .income_tax {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+      }
     }
 
     .container_table {
