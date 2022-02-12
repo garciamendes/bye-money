@@ -1,5 +1,5 @@
 // React
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 // Third party
 import 'react-modern-calendar-datepicker/lib/DatePicker.css'
@@ -21,6 +21,7 @@ import './home.scss'
 
 // Preview
 import api from '../../API.json'
+import { Loader } from '../../components/Loader'
 
 export function Home() {
   // Others
@@ -35,6 +36,12 @@ export function Home() {
   const [selectDay, setSelectDay] = useState(defaultValue)
   const [isLoading, setIsLoading] = useState(true)
   const [search, setSearch] = useState('')
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false)
+    }, 5000)
+  })
 
   const valuesChange = (value: Day) => {
     setSelectDay({
@@ -108,6 +115,14 @@ export function Home() {
         </Table.Row>
       )
     })
+  }
+
+  if (isLoading) {
+    return (
+      <div className='container_isLoading'>
+        <Loader children={'Carregando...'} />
+      </div>
+    )
   }
 
   return (

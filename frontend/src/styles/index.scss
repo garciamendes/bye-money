@@ -24,15 +24,34 @@ html, body, #root {
   }
 }
 
-.c_loader {
-  border: 2px solid #e5e5e5;
-  border-radius: 50%;
-  border-top-color: $color_side_menu;
-  animation: is-rotating 1s infinite;
+.container_isLoading {
+  display: flex !important;
+  height: 100% !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
 
-  @keyframes is-rotating {
-    to {
-      transform: rotate(1turn);
+.container_main_is_loading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+  & > p {
+    font-size: 1.3rem;
+  }
+
+  .c_loader {
+    border: 2px solid #e5e5e5;
+    border-radius: 50%;
+    border-top-color: $color_side_menu;
+    animation: is-rotating 1s infinite;
+
+    @keyframes is-rotating {
+      to {
+        transform: rotate(1turn);
+      }
     }
   }
 }
